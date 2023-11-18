@@ -5,6 +5,7 @@ const geoCode = require('./utils/geocode');
 const forecast = require('./utils/forecast')
 
 const app = express();
+const port = process.env.PORT || 8888;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -22,21 +23,21 @@ app.use(express.static(publicDirectoryPath));
 app.get('', (req, res) => {
      res.render('index', {
           title: 'Weather App',
-          name: 'Saba',
+          name: 'Saba Shakulashvili',
      });
 });
 
 app.get('/about', (req, res) => {
      res.render('about', {
           title: 'About Me',
-          name: 'Saba'
+          name: 'Saba Shakulashvili'
      });
 })
 
 app.get('/help', (req, res) => {
      res.render('help', {
           title: 'Help',
-          name: 'Saba',
+          name: 'Saba Shakulashvili',
           helpText: 'This is template help message!'
      })
 });
@@ -80,7 +81,7 @@ app.get('/products', (req,res) => {
 app.get('/help/*', (req,res) => {
      res.render('404', {
           title: '404',
-          name: 'Saba',
+          name: 'Saba Shakulashvili',
           errorMessage: 'Help article not found'
      })
 })
@@ -88,11 +89,11 @@ app.get('/help/*', (req,res) => {
 app.get('*', (req, res) => {
      res.render('404', {
           title: '404',
-          name: 'Saba',
+          name: 'Saba Shakulashvili',
           errorMessage: 'My 404 page'
      })
 })
 
-app.listen(8888, () => {
-     console.log('Server is up on port 8888');
+app.listen(port, () => {
+     console.log('Server is up on port ' + port);
 });
